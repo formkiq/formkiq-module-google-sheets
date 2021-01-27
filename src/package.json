@@ -1,0 +1,23 @@
+{
+  "name": "formkiq-module-google-sheets",
+  "version": "1.0.0",
+  "description": "FormKiQ Module for Google Sheets",
+  "main": "app.js",
+  "repository": "https://github.com/formkiq/formkiq-module-google-sheets.git",
+  "author": "SAM CLI",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "googleapis": "^67.0.0"
+  },
+  "scripts": {
+    "test": "mocha --timeout 60000 tests/unit/",
+    "integ-test": "mocha tests/integration/",
+    "buildZip": "npm prune --production ; zip -r module-google-sheets.zip *.js package* node_modules"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.815.0",
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1"
+  }
+}
