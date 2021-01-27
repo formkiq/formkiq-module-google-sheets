@@ -31,4 +31,4 @@ The plugin require permissions to Google Sheets.
 
 ![Share Google Sheet](https://github.com/formkiq/formkiq-module-google-sheets/raw/master/docs/share-google-sheet.png)
 
-- Click `Share` and enter the email address from the **Service account details**
+- Click `Share` and enter the `gserviceaccount.com` email address from the **Service account details**
