@@ -30,3 +30,5 @@ The plugin require permissions to Google Sheets.
 - Visit [Google Drive](https://drive.google.com/) and create a new `Google Sheets`
 
 ![Share Google Sheet](https://github.com/formkiq/formkiq-module-google-sheets/raw/master/docs/share-google-sheet.png)
+
+- Click `Share` and enter the email address from the **Service account details**
