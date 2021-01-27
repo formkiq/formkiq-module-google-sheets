@@ -19,10 +19,12 @@ The plugin require permissions to Google Sheets.
 
 ![Service Account Details](https://github.com/formkiq/formkiq-module-google-sheets/raw/master/docs/service-account-details.jpg)
 
-###
+### Create Private Key
+
+Click the `Create key` to generate a private key
 
 ![Service Accounts](https://github.com/formkiq/formkiq-module-google-sheets/raw/master/docs/service-accounts.png)
 
-###
+### Save private key to file
 
 ![Private Key](https://github.com/formkiq/formkiq-module-google-sheets/raw/master/docs/service-privatekey.jpg)
