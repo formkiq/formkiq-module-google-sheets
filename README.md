@@ -17,5 +17,11 @@ The plugin require permissions to Google Sheets.
 
 3. Click **Create Service Account**
 
-4. Under **Service account details**, enter a `Service account name` and make note of the **Service Account ID** as you will need it later.
+4. Under **Service account details**, enter a `Service account name` and click **DONE**.
 ![Service Account Details](https://github.com/formkiq/formkiq-module-google-sheets/raw/master/docs/service-account-details.jpg)
+
+5.
+![Service Accounts](https://github.com/formkiq/formkiq-module-google-sheets/raw/master/docs/service-accounts.png)
+
+6.
+![Private Key](https://github.com/formkiq/formkiq-module-google-sheets/raw/master/docs/service-privatekey.jpg)
