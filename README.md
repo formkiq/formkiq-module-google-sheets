@@ -32,3 +32,15 @@ The plugin require permissions to Google Sheets.
 ![Share Google Sheet](https://github.com/formkiq/formkiq-module-google-sheets/raw/master/docs/share-google-sheet.png)
 
 - Click `Share` and enter the `gserviceaccount.com` email address from the **Service account details**
+
+## Store Private Key in Parameter Store
+
+To keep the privatekey secret. The plugin uses the [AWS Parameter Store](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html) to the private key.
+
+Save your private key to a file named `privateKey.json` and use the [AWS CLI](https://aws.amazon.com/cli/) command below to store the privatekey in the parameter store.
+
+**NOTE:** replace <AppEnvironment> with the value used in your FormKiQ installation.
+
+```
+aws ssm put-parameter --overwrite --type SecureString --name '/formkiq/<AppEnvironment>/auth/google/spreadsheets' --value "$(cat privateKey.json)"
+```
