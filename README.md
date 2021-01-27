@@ -1,2 +1,17 @@
-# formkiq-module-google-sheets
-Google Sheets Module for FormKiQ
+![FormKiQ](https://raw.githubusercontent.com/formkiq/formkiq-core/master/logo.png)
+
+# FormKiQ Module Google Sheets
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+Google Sheets Module for [FormKiQ](https://github.com/formkiq/formkiq-core)
+
+# Configuring Google Permissions
+
+The plugin require permissions to Google Sheets.
+
+## Generate Google Private Key Authorization
+
+1. Visit [Google Cloud Platform](https://console.cloud.google.com/)
+2. Click IAM & Admin -> Service Accounts
+3. Click **Create Service Account**
+4. Under **Service account details**, enter a 
