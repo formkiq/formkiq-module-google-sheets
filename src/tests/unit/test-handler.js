@@ -45,7 +45,7 @@ describe('googlesheets', function () {
     it('insert 1 row', async () => {
 
         var text = await readFile('./tests/unit/json/data0.json');
-        const result = await app.lambdaHandler(JSON.parse(text), {})
+        const result = await app.handler(JSON.parse(text), {})
         expect(result).to.be.equal("update made to Google Sheets");
 
         let values = await sheets.spreadsheets.values.get({
@@ -61,7 +61,7 @@ describe('googlesheets', function () {
     it('insert 2 rows', async () => {
 
         var text = await readFile('./tests/unit/json/data1.json');
-        const result = await app.lambdaHandler(JSON.parse(text), {})
+        const result = await app.handler(JSON.parse(text), {})
         expect(result).to.be.equal("update made to Google Sheets");
 
         let values = await sheets.spreadsheets.values.get({
@@ -86,7 +86,7 @@ describe('googlesheets', function () {
         });
 
         var text = await readFile('./tests/unit/json/data1.json');
-        const result = await app.lambdaHandler(JSON.parse(text), {})
+        const result = await app.handler(JSON.parse(text), {})
         expect(result).to.be.equal("update made to Google Sheets");
 
         let values = await sheets.spreadsheets.values.get({
@@ -115,7 +115,7 @@ describe('googlesheets', function () {
         });
 
         var text = await readFile('./tests/unit/json/data1.json');
-        var result = await app.lambdaHandler(JSON.parse(text), {})
+        var result = await app.handler(JSON.parse(text), {})
         expect(result).to.be.equal("update made to Google Sheets");
 
         var values = await sheets.spreadsheets.values.get({
@@ -133,7 +133,7 @@ describe('googlesheets', function () {
         expect(values.data.values[2][1]).to.be.equal("jane smith");
 
         text = await readFile('./tests/unit/json/data2.json');
-        result = await app.lambdaHandler(JSON.parse(text), {})
+        result = await app.handler(JSON.parse(text), {})
         expect(result).to.be.equal("update made to Google Sheets");
 
         values = await sheets.spreadsheets.values.get({

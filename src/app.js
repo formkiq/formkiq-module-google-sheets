@@ -2,7 +2,7 @@ const AWS = require('aws-sdk');
 const {google} = require('googleapis');
 var ssm;
 
-exports.lambdaHandler = async (event, context) => {
+exports.handler = async (event, context) => {
 
     var jwtClient;
     var sheets;

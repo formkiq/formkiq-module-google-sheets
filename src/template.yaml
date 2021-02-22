@@ -1,0 +1,82 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: FormKiQ - Google Sheets Module
+Parameters:
+  AppEnvironment:
+    Type: String
+    Description: The Application Environment
+    AllowedPattern: ".+"
+Resources:
+  Module:
+    Type: AWS::Serverless::Application
+    Properties:
+      Location: ../module-documentevent.yaml
+      Parameters:
+        AppEnvironment: !Ref AppEnvironment
+      Tags:
+        Application: !Sub "FormKiQ"
+        AppEnvironment: !Sub "${AppEnvironment}"
+        StackName: !Sub "${AWS::StackName}"
+  GoogleSheets:
+    Type: AWS::Serverless::Function
+    DependsOn:
+      - GoogleSheetsRole
+    Properties:
+      Handler: app.handler
+      Runtime: nodejs12.x
+      Timeout: 60
+      MemorySize: 256
+      CodeUri: ./module-google-sheets.zip
+      Environment:
+        Variables:
+          SPREAD_SHEET_ID: "1w96XEDHaEgZuGKn32aMqoIHO4HVLlwOE0ovgZK1JkcA"
+          SHEET: "Sheet1"
+          APP_ENVIRONMENT: !Ref AppEnvironment
+      Role: !GetAtt [GoogleSheetsRole, Arn]
+      Tags:
+        Application: !Sub "FormKiQ"
+        AppEnvironment: !Sub "${AppEnvironment}"
+      Events:
+        CreateSQSEvent:
+          Type: SQS
+          Properties:
+            Queue: !GetAtt Module.Outputs.SqsQueueArn
+            BatchSize: 10
+  GoogleSheetsRole:
+    Type: AWS::IAM::Role
+    Properties:
+      Tags:
+        - Key: "Application"
+          Value: !Sub "FormKiQ"
+        - Key: "AppEnvironment"
+          Value: !Sub "${AppEnvironment}"
+        - Key: StackName
+          Value: !Sub "${AWS::StackName}"
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      Path: /
+      Policies:
+        - PolicyName: GoogleSheetsPolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: "*"
+              - Effect: Allow
+                Action:
+                  - sqs:ReceiveMessage
+                  - sqs:DeleteMessage
+                  - sqs:GetQueueAttributes
+                Resource:
+                  - !GetAtt Module.Outputs.SqsQueueArn
